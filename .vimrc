@@ -17,6 +17,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
 
 "needed for nercommenter
 filetype plugin on
@@ -32,6 +33,24 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+
+"coding style
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey
+
+"stuff for c and c++
+"Vim has a gf command (and related, <C-W><C-F> to open in new tab) which open
+"file whose name is under or after the cursor. This feature is extremely
+"useful for browsing header files.
+"
+"By default, Vim searches file in working directory. However, most projects
+"have separated directory for include files. Thus, you should set Vim’s path
+"option to contain a comma-separated list of directories to look for the file.
+let &path.="src/include,/usr/include/A,"
 
 "quick maps - leader is '\'
 imap <leader>' ''<ESC>i
