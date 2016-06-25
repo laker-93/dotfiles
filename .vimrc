@@ -19,8 +19,10 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
 
+"YouCompleteMe config
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
 "needed for nercommenter
-filetype plugin on
+filetype plugin indent on
 "re map arrow keys to nothing
 no <down> ddp
 no <right> <Nop>
@@ -38,8 +40,10 @@ vno <up> <Nop>
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set colorcolumn=80
+set ignorecase
+set smartcase
 highlight ColorColumn ctermbg=darkgrey
 
 "stuff for c and c++
@@ -89,7 +93,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
-set laststatus=2 
+set laststatus=2
 set fillchars+=stl:\ ,stlnc:\
 set relativenumber
 set number
@@ -110,4 +114,18 @@ let g:indentLine_colour_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
 
-"random comment
+" Remove trailing whitespaces with :RmTrailSpaces
+command RmTrailSpaces execute '%s/\s\+$//g'
+
+"Octave syntax
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END 
+
+" Use keywords from Octave syntax language file for autocomplete
+  if has("autocmd") && exists("+omnifunc")
+     autocmd Filetype octave
+        \ if &omnifunc == "" |
+   \ setlocal omnifunc=syntaxcomplete#Complete |
+   \ endif
+endif 
