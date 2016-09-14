@@ -2,27 +2,30 @@
 "after installation of bundles
 set nocompatible   " Disable vi-compatibility
 filetype off
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'easymotion/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'sjl/badwolf'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'SirVer/ultisnips'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'gmarik/vundle'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'altercation/vim-colors-solarized'
+"Plugin 'sjl/badwolf'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jvirtanen/vim-octave'
 
+call vundle#end()
+filetype plugin indent on
 "YouCompleteMe config
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
 "needed for nercommenter
-filetype plugin indent on
 "re map arrow keys to nothing
 no <down> ddp
 no <right> <Nop>
@@ -35,6 +38,11 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+
+"for solarized coloring
+syntax enable
+set background=dark
+colorscheme solarized
 
 "coding style
 set tabstop=4
@@ -80,6 +88,9 @@ map <C-t>     :tabnew<CR>
 
 "Navigational commands within directories
 nnoremap <leader>pwd :redir @* <bar> echo expand('%:p') <bar> redir END <CR>
+
+" Apply YCM FixIt
+map <F9> :YcmCompleter FixIt<CR>
 
 " g<Ctrl+o> to create a new line above cursor (Ctrl to prevent collision with 'go' command)
 nmap g<C-O> o<ESC>k
