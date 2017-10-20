@@ -1,5 +1,6 @@
 "Vundle settings - filetype has to be off initially. Can be turned on
 "after installation of bundles
+
 set nocompatible   " Disable vi-compatibility
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
@@ -44,6 +45,8 @@ vno <up> <Nop>
 
 "for solarized coloring
 syntax enable
+"let g:solarized_termcolors=256
+"set t_Co=256 
 set background=dark
 colorscheme solarized
 
@@ -111,12 +114,13 @@ map <C-t>     :tabnew<CR>
 nnoremap <leader>pwd :redir @* <bar> echo expand('%:p') <bar> redir END <CR>
 
 " Apply YCM FixIt
+"
 map <F9> :YcmCompleter FixIt<CR>
 
-" g<Ctrl+o> to create a new line above cursor (Ctrl to prevent collision with 'go' command)
-nmap g<C-O> o<ESC>k
-" gO to create a new line below cursor in normal mode
-nmap gO O<ESC>j
+" Enter to create a new line above cursor
+nmap <Enter> o<ESC>k
+" Ctrl enter to create a new line below cursor in normal mode
+nmap <C-Enter> O<ESC>j
 
 
 syntax on
