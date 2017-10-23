@@ -53,7 +53,7 @@ colorscheme solarized
 set clipboard=unnamed
 
 "for solarized running in terminal
-"if colors_name == 'solarized'
+if colors_name == 'solarized'
       if has('gui_macvim')
               set transparency=0
                 endif
@@ -65,7 +65,7 @@ set clipboard=unnamed
                                     endif
 
                                       call togglebg#map("<F2>")
-"                                  endif
+                                  endif
 
 "coding style
 set tabstop=4
