@@ -7,22 +7,20 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
-Plugin 'easymotion/vim-easymotion'
+"Plugin 'easymotion/vim-easymotion'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'sjl/badwolf'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'SirVer/ultisnips'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
-Plugin 'jvirtanen/vim-octave'
+"Plugin 'jvirtanen/vim-octave'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,9 +42,10 @@ vno <right> <Nop>
 vno <up> <Nop>
 
 "for solarized coloring
+set t_Co=256 
 syntax enable
-"let g:solarized_termcolors=256
-"set t_Co=256 
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
@@ -54,7 +53,7 @@ colorscheme solarized
 set clipboard=unnamed
 
 "for solarized running in terminal
-if colors_name == 'solarized'
+"if colors_name == 'solarized'
       if has('gui_macvim')
               set transparency=0
                 endif
@@ -66,7 +65,7 @@ if colors_name == 'solarized'
                                     endif
 
                                       call togglebg#map("<F2>")
-                                  endif
+"                                  endif
 
 "coding style
 set tabstop=4
@@ -128,7 +127,7 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 
 let g:Powerline_symbols = 'fancy'
-set t_Co=256
+"set t_Co=256
 set laststatus=2
 set fillchars+=stl:\ ,stlnc:\
 set relativenumber
