@@ -21,6 +21,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'jvirtanen/vim-octave'
 Plugin 'rust-lang/rust.vim'
+Plugin 'pearofducks/ansible-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -28,30 +29,19 @@ filetype plugin indent on
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
 "let g:ycm_server_python_interpreter = 'python2'
 "needed for nercommenter
-"re map arrow keys to nothing
-no <down> ddp
-no <right> <Nop>
-no <up> ddkP
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
 
 "for solarized coloring
 set t_Co=256 
 syntax enable
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
-set background=dark
+set background=light
 colorscheme solarized
 
 "use system clipboard with tmux
 set clipboard=unnamed
 
+set modeline
 "for solarized running in terminal
 if colors_name == 'solarized'
       if has('gui_macvim')
@@ -71,6 +61,7 @@ if colors_name == 'solarized'
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set textwidth=100
 set expandtab
 set colorcolumn=80
 set ignorecase
@@ -133,6 +124,13 @@ set fillchars+=stl:\ ,stlnc:\
 set relativenumber
 set number
 
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window " . expand("%:t"))
+
+"python formating for scons files
+au BufRead,BufNewFile SContruct set filetype=python
+au BufRead,BufNewFile SConscript set filetype=python
+au BufRead,BufNewFile SContruct.* set filetype=python
+au BufRead,BufNewFile SConscript.* set filetype=python
 
 "syntastic settings
 set statusline+=%#warningmsg#
@@ -151,6 +149,9 @@ let g:indentLine_char = '│'
 
 " Remove trailing whitespaces with :RmTrailSpaces
 command RmTrailSpaces execute '%s/\s\+$//g'
+" Show trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$
 
 "Octave syntax
 augroup filetypedetect
